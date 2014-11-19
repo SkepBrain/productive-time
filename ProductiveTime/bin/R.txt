@@ -353,6 +353,7 @@ int id always 0x7f090014
 int id beginning 0x7f09001b
 int id bottom 0x7f09001e
 int id checkbox 0x7f09002b
+int id clock 0x7f090042
 int id collapseActionView 0x7f090015
 int id container 0x7f090041
 int id decor_content_parent 0x7f090031
@@ -364,7 +365,6 @@ int id edit_query 0x7f090035
 int id end 0x7f09001c
 int id expand_activities_button 0x7f090024
 int id expanded_menu 0x7f09002a
-int id hello 0x7f090042
 int id home 0x7f090000
 int id homeAsUp 0x7f09000e
 int id icon 0x7f090028
