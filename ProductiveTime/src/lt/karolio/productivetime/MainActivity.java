@@ -45,10 +45,12 @@ public class MainActivity extends ActionBarActivity {
 				}
 				else {
 					if (clockRunner.getStatus() == false) {
+                        System.out.println("Resumed");
 						clockRunner.resumeTimer();
 					}
 					else {
-						clockRunner.pauseTimer();
+                        System.out.println("Paused");
+                        clockRunner.pauseTimer();
 					}
 				}
 			}
