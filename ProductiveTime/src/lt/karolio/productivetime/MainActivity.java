@@ -31,10 +31,11 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_main);
+
+		setContentView(R.layout.fragment_clock);
 //		if (savedInstanceState == null) {
 //			getSupportFragmentManager().beginTransaction()
-//			.add(R.id.container, new PlaceholderFragment()).commit();
+//			.add(R.id.container, new ClockFragment()).commit();
 //		}
 		clock = (TextView)findViewById(R.id.clock);
 		clock.setOnClickListener(new OnClickListener() {
@@ -79,17 +80,15 @@ public class MainActivity extends ActionBarActivity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
+//	public static class PlaceholderFragment extends Fragment {
+//
+//
+//		@Override
+//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//				Bundle savedInstanceState) {
+//			View rootView = inflater.inflate(R.layout.fragment_main, container,
+//					false);
+//			return rootView;
+//		}
+//	}
 }
