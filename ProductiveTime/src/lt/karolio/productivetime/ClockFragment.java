@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 
@@ -25,11 +24,12 @@ public class ClockFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    public TextView clock;
+    ClockRunner clockRunner = null;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private TextView clock;
-    private ClockRunner clockRunner;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,40 +58,65 @@ public class ClockFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("fragment onCreate");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
-    
-    public void onStart() {
-    	super.onStart();
-		clock = (TextView)getView().findViewById(R.id.clock);
-		clock.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (clockRunner == null) {
-					clockRunner = new ClockRunner(clock, 90);
-				}
-				else {
-					if (clockRunner.getStatus() == false) {
-                        System.out.println("Resumed");
-						clockRunner.resumeTimer();
-					}
-					else {
-                        System.out.println("Paused");
-                        clockRunner.pauseTimer();
-					}
-				}
-			}
-		});
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        System.out.println("fragment onCreateView");
+       // clock = (TextView)getView().findViewById(R.id.clock);
+//        clock.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (clockRunner == null) {
+//                    clockRunner = new ClockRunner(clock, 90);
+//                }
+//                else {
+//                    if (clockRunner.getStatus() == false) {
+//                        System.out.println("Resumed");
+//                        clockRunner.resumeTimer();
+//                    }
+//                    else {
+//                        System.out.println("Paused");
+//                        clockRunner.pauseTimer();
+//                    }
+//                }
+//            }
+//        });
         return inflater.inflate(R.layout.fragment_clock, container, false);
+    }
+
+    @Override
+    public void onStart (){
+        super.onStart();
+        System.out.println("fragment onActivityCreated");
+         clock = (TextView)getView().findViewById(R.id.clock);
+        clock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clockRunner == null) {
+                    clockRunner = new ClockRunner(clock, 90);
+                }
+                else {
+                    if (clockRunner.getStatus() == false) {
+                        System.out.println("Resumed");
+                        clockRunner.resumeTimer();
+                    }
+                    else {
+                        System.out.println("Paused");
+                        clockRunner.pauseTimer();
+                    }
+                }
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
