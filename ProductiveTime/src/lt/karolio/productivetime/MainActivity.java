@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ClockFragment.OnFragmentInteractionListener {
 	
 	public TextView clock;
 	ClockRunner clockRunner = null;
@@ -32,30 +33,11 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.fragment_clock);
-//		if (savedInstanceState == null) {
-//			getSupportFragmentManager().beginTransaction()
-//			.add(R.id.container, new ClockFragment()).commit();
-//		}
-		clock = (TextView)findViewById(R.id.clock);
-		clock.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (clockRunner == null) {
-					clockRunner = new ClockRunner(clock, 90);
-				}
-				else {
-					if (clockRunner.getStatus() == false) {
-                        System.out.println("Resumed");
-						clockRunner.resumeTimer();
-					}
-					else {
-                        System.out.println("Paused");
-                        clockRunner.pauseTimer();
-					}
-				}
-			}
-		});
+		setContentView(R.layout.activity_main);
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+			.add(R.id.container, new ClockFragment()).commit();
+		}
 	}
 
 	@Override
@@ -76,19 +58,9 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-//	public static class PlaceholderFragment extends Fragment {
-//
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//				Bundle savedInstanceState) {
-//			View rootView = inflater.inflate(R.layout.fragment_main, container,
-//					false);
-//			return rootView;
-//		}
-//	}
+	
+	@Override
+	public void onFragmentInteraction(Uri uri) {
+		
+	}
 }

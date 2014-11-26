@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 
 /**
@@ -26,6 +28,8 @@ public class ClockFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView clock;
+    private ClockRunner clockRunner;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,6 +62,29 @@ public class ClockFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+    
+    public void onStart() {
+    	super.onStart();
+		clock = (TextView)getView().findViewById(R.id.clock);
+		clock.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (clockRunner == null) {
+					clockRunner = new ClockRunner(clock, 90);
+				}
+				else {
+					if (clockRunner.getStatus() == false) {
+                        System.out.println("Resumed");
+						clockRunner.resumeTimer();
+					}
+					else {
+                        System.out.println("Paused");
+                        clockRunner.pauseTimer();
+					}
+				}
+			}
+		});
     }
 
     @Override
