@@ -355,7 +355,6 @@ int id bottom 0x7f09001e
 int id checkbox 0x7f09002b
 int id clock 0x7f090042
 int id collapseActionView 0x7f090015
-int id container 0x7f090041
 int id decor_content_parent 0x7f090031
 int id default_activity_button 0x7f090026
 int id dialog 0x7f090019
@@ -376,6 +375,7 @@ int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
+int id pager 0x7f090041
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002d

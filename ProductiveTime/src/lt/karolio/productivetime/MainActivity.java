@@ -29,9 +29,6 @@ import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements ClockFragment.OnFragmentInteractionListener {
-	
-	//public TextView clock;
-	//
 
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 
@@ -41,65 +38,13 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
-
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        ClockFragment clockFragment = new ClockFragment();
-//        fragmentTransaction.add(R.id.container, clockFragment);
-//        fragmentTransaction.commit();
-
 		setContentView(R.layout.activity_main);
-        // Check whether the activity is using the layout version with
-        // the fragment_container FrameLayout. If so, we must add the first fragment
-//        if (findViewById(R.id.container) != null) {
-//            System.out.println("After 1st if");
-////            // However, if we're being restored from a previous state,
-////            // then we don't need to do anything and should return or else
-////            // we could end up with overlapping fragments.
-//            if (savedInstanceState != null) {
-//                System.out.println("bybys jau buvo");
-//                return;
-//            }
-//            System.out.println("After 2nd if");
-////            // Create an instance of ExampleFragment
-//            ClockFragment firstFragment = new ClockFragment();
-////
-////            // In case this activity was started with special instructions from an Intent,
-////            // pass the Intent's extras to the fragment as arguments
-//       //     firstFragment.setArguments(getIntent().getExtras());
-////
-////            // Add the fragment to the 'fragment_container' FrameLayout
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, firstFragment).commit();
-//
-//        }
-//        else
-//            System.out.println(findViewById(R.id.container));
+		
+        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                // When swiping between different app sections, select the corresponding tab.
-                // We can also use ActionBar.Tab#select() to do this if we have a reference to the
-                // Tab.
-                //       actionBar.setSelectedNavigationItem(position);
-            }
-        });
+        mViewPager.setOffscreenPageLimit(5);
 
-        // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by the adapter.
-            // Also specify this Activity object, which implements the TabListener interface, as the
-            // listener for when this tab is selected.
-//            actionBar.addTab(
-//                    actionBar.newTab()
-//                            .setText(mAppSectionsPagerAdapter.getPageTitle(i))
-//                           // .setTabListener(this));
-//        }
-        }
 	}
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {

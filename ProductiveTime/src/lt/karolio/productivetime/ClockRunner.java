@@ -45,8 +45,6 @@ public class ClockRunner {
                 mins = String.format(Locale.US, "%02d", Math.round((float)millisUntilFinished / 1000) / 60);
                 secs = String.format(Locale.US, "%02d", Math.round((float)millisUntilFinished / 1000) % 60);
                 clock.setText(mins+":"+secs);
-                System.out.println("--------" + millisUntilFinished + "    " + (float)(millisUntilFinished / 1000));
-                System.out.println(mins + ":" + secs);
                 time = millisUntilFinished;
             }
 
