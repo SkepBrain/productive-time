@@ -34,17 +34,21 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 
     ViewPager mViewPager;
 
-	@Override
+    public static int pomodoroTime = 90;
+    public static int shortBreakTime = 10;
+
+
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_main);
-		
+        setContentView(R.layout.activity_main);
+
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(5);
-
 	}
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
@@ -59,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
                 case 0:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
-                    return new ClockFragment();
+                    return ClockFragment.newInstance(pomodoroTime, shortBreakTime);
 
                 case 1:
                     return new StatsFragment();
