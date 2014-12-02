@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -28,8 +29,8 @@ public class ClockFragment extends Fragment {
     ClockRunner clockRunner = null;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int pomodoroTime;
+    private int shortBreakTime;
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,11 +43,11 @@ public class ClockFragment extends Fragment {
      * @return A new instance of fragment ClockFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ClockFragment newInstance(String param1, String param2) {
+    public static ClockFragment newInstance(int param1, int param2) {
         ClockFragment fragment = new ClockFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,8 +61,8 @@ public class ClockFragment extends Fragment {
         super.onCreate(savedInstanceState);
         System.out.println("fragment onCreate");
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        	pomodoroTime = getArguments().getInt(ARG_PARAM1);
+        	shortBreakTime = getArguments().getInt(ARG_PARAM2);
         }
     }
 
@@ -75,12 +76,13 @@ public class ClockFragment extends Fragment {
     @Override
     public void onStart (){
         super.onStart();
+        View circle = getView().findViewById(R.id.circle);
         clock = (TextView)getView().findViewById(R.id.clock);
-        clock.setOnClickListener(new View.OnClickListener() {
+        circle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clockRunner == null) {
-                    clockRunner = new ClockRunner(clock, 90);
+                	clockRunner = new ClockRunner(clock, shortBreakTime);
                 }
                 else {
                     if (clockRunner.getStatus() == false) {

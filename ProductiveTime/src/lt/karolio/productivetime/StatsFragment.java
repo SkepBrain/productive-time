@@ -1,12 +1,15 @@
 package lt.karolio.productivetime;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -90,6 +93,23 @@ public class StatsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
    //     mListener = null;
+    }
+    
+    public void onResume() {
+    	super.onResume();
+        
+        //TextView count = (TextView)getView().findViewById(R.id.count);
+        //count.setText(MainActivity.logger.getPomodoroCount()+"");
+        
+    }
+    
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+    	super.setUserVisibleHint(isVisibleToUser);
+    	if (isVisibleToUser) {
+            //TextView count = (TextView)getView().findViewById(R.id.count);
+            //count.setText(MainActivity.logger.getPomodoroCount()+"");
+    	}
     }
 
     /**

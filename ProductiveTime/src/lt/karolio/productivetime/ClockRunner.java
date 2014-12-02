@@ -11,6 +11,8 @@ public class ClockRunner {
 	private TextView clock;
 	private String mins;
 	private String secs;
+	private int startTime;
+	private int endTime;
 	private CountDownTimer countdown;
 	
 	public ClockRunner(TextView clockView, int time) {
@@ -51,7 +53,10 @@ public class ClockRunner {
             @Override
             public void onFinish() {
                 clock.setText("Whoila!");
+                endTime = (int) (System.currentTimeMillis() / 1000L);
+                MainActivity.logger.addPomodoro(startTime, endTime, "Papai");
             }
         };
+        startTime = (int) (System.currentTimeMillis() / 1000L);
     }
 }

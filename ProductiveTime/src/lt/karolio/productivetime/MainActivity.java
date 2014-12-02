@@ -9,10 +9,13 @@ import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -33,6 +36,9 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 
     ViewPager mViewPager;
+    public static Logger logger;
+    public static int pomodoroTime = 90;
+    public static int shortBreakTime = 10;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,19 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(5);
-
+        /*mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+        	
+			public void onPageSelected(int pageNumber) {
+				(mAppSectionsPagerAdapter.getItem(pageNumber)).renew();
+			}
+			
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+			
+			public void onPageScrollStateChanged(int arg0) {
+			}
+        });*/
+        logger = new Logger(this);
 	}
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
@@ -57,18 +75,10 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
         public Fragment getItem(int i) {
             switch (i) {
                 case 0:
-                    // The first section of the app is the most interesting -- it offers
-                    // a launchpad into the other demonstrations in this example application.
-                    return new ClockFragment();
-
+                	return ClockFragment.newInstance(pomodoroTime, shortBreakTime);
                 case 1:
                     return new StatsFragment();
                 default:
-                    // The other sections of the app are dummy placeholders.
-             //       Fragment fragment = new StatsFragment();
-                  //  Bundle args = new Bundle();
-                   // args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-                 //   fragment.setArguments(args);
                     return new FactsFragment();
             }
         }
@@ -83,7 +93,6 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
             return "Section " + (position + 1);
         }
     }
-
 
 
     @Override
@@ -108,19 +117,4 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
     public void onFragmentInteraction(Uri uri){
         System.out.println(uri.toString());
     }
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-//	public static class PlaceholderFragment extends Fragment {
-//
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//				Bundle savedInstanceState) {
-//			View rootView = inflater.inflate(R.layout.fragment_main, container,
-//					false);
-//			return rootView;
-//		}
-//	}
 }
