@@ -4,9 +4,8 @@
     android:shape="oval">
 
     <size
-        android:width="10dp"
-        android:height="10dp" />
+        android:width="@dimen/circle_dimen"
+        android:height="@dimen/circle_dimen" />
     <solid
         android:color="@color/circle_color" />
-
 </shape>

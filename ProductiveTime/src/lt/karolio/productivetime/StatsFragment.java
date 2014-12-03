@@ -1,22 +1,23 @@
 package lt.karolio.productivetime;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link StatsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link StatsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+///**
+// * A simple {@link Fragment} subclass.
+// * Activities that contain this fragment must implement the
+// * {@link StatsFragment.OnFragmentInteractionListener} interface
+// * to handle interaction events.
+// * Use the {@link StatsFragment#newInstance} factory method to
+// * create an instance of this fragment.
+// */
 public class StatsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +27,10 @@ public class StatsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static Calendar calendar;
+
+    public TextView year;
 
  //   private OnFragmentInteractionListener mListener;
 
@@ -44,6 +49,7 @@ public class StatsFragment extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -54,7 +60,8 @@ public class StatsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        System.out.println("Stats fragment onCreate");
+        calendar  = Calendar.getInstance();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -65,8 +72,23 @@ public class StatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        System.out.println("Stats fragment onCreateView");
         return inflater.inflate(R.layout.fragment_stats, container, false);
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        year = (TextView)getView().findViewById(R.id.year);
+       //  year.setText(calendar.getDisplayName(Calendar.YEAR, Calendar.SHORT, Locale.US));
+        // System.out.println(calendar.get(Calendar.YEAR));
+        String yearText = String.valueOf(calendar.get(Calendar.YEAR));
+
+        System.out.println(year);
+        year.setText(yearText);
+
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {

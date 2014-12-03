@@ -8,31 +8,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="lt.karolio.productivetime.ClockFragment"
     android:background="@color/background_color">
-    
-    <View
-        android:id="@+id/circle"
+
+    <FrameLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_circle"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:id="@+id/circle"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-    
-    <TextView
-        android:id="@+id/clock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="80sp"
-        android:textColor="@color/text_color"
-        android:gravity="center"
-        android:text="00:00" />
+        android:layout_centerHorizontal="true">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer_start"
+            android:textSize="80sp"
+            android:textColor="@color/text_color"
+            android:id="@+id/clock"
+            android:layout_gravity="center" />
 
-
-  <!--  <lt.karolio.productivetime.DrawableView
-        android:id="@+id/custom_drawable_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        />-->
+    </FrameLayout>
 
 </RelativeLayout>

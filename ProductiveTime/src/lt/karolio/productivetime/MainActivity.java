@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 
     ViewPager mViewPager;
 
+    ActionBar actionBar;
     public static int pomodoroTime = 90;
     public static int shortBreakTime = 10;
 
@@ -44,6 +45,9 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 		super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
