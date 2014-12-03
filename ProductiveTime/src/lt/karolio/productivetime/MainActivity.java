@@ -37,8 +37,9 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 
     ViewPager mViewPager;
     public static Logger logger;
-    public static int pomodoroTime = 90;
-    public static int shortBreakTime = 10;
+    public static int pomodoroTime = 25;
+    public static int shortBreakTime = 5;
+    public static int longBreakTime = 30;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
         public Fragment getItem(int i) {
             switch (i) {
                 case 0:
-                	return ClockFragment.newInstance(pomodoroTime, shortBreakTime);
+                	return ClockFragment.newInstance(pomodoroTime, shortBreakTime, longBreakTime);
                 case 1:
                     return new StatsFragment();
                 default:

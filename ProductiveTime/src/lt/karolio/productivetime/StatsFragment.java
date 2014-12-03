@@ -98,8 +98,8 @@ public class StatsFragment extends Fragment {
     public void onResume() {
     	super.onResume();
         
-        //TextView count = (TextView)getView().findViewById(R.id.count);
-        //count.setText(MainActivity.logger.getPomodoroCount()+"");
+        TextView secs = (TextView)getView().findViewById(R.id.year);
+        secs.setText(MainActivity.logger.getPomodoroTime((int)(System.currentTimeMillis() / 1000L - 86400), (int)(System.currentTimeMillis() / 1000L))+"");
         
     }
     
@@ -107,8 +107,8 @@ public class StatsFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
     	super.setUserVisibleHint(isVisibleToUser);
     	if (isVisibleToUser) {
-            //TextView count = (TextView)getView().findViewById(R.id.count);
-            //count.setText(MainActivity.logger.getPomodoroCount()+"");
+            TextView secs = (TextView)getView().findViewById(R.id.year);
+            secs.setText(MainActivity.logger.getPomodoroTime((int)(System.currentTimeMillis() / 1000L - 86400), (int)(System.currentTimeMillis() / 1000L))+"");
     	}
     }
 

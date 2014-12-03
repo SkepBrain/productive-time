@@ -24,6 +24,7 @@ public class ClockFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
 
     public TextView clock;
     ClockRunner clockRunner = null;
@@ -31,6 +32,7 @@ public class ClockFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private int pomodoroTime;
     private int shortBreakTime;
+    private int longBreakTime;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,11 +45,12 @@ public class ClockFragment extends Fragment {
      * @return A new instance of fragment ClockFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ClockFragment newInstance(int param1, int param2) {
+    public static ClockFragment newInstance(int param1, int param2, int param3) {
         ClockFragment fragment = new ClockFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,6 +66,7 @@ public class ClockFragment extends Fragment {
         if (getArguments() != null) {
         	pomodoroTime = getArguments().getInt(ARG_PARAM1);
         	shortBreakTime = getArguments().getInt(ARG_PARAM2);
+        	longBreakTime = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -82,17 +86,11 @@ public class ClockFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (clockRunner == null) {
-                	clockRunner = new ClockRunner(clock, shortBreakTime);
+                	clockRunner = new ClockRunner(clock, pomodoroTime, shortBreakTime, 30);
                 }
                 else {
-                    if (clockRunner.getStatus() == false) {
-                        System.out.println("Resumed");
-                        clockRunner.resumeTimer();
-                    }
-                    else {
-                        System.out.println("Paused");
-                        clockRunner.pauseTimer();
-                    }
+                	clockRunner.stopTimer();
+                	clockRunner = null;
                 }
             }
         });

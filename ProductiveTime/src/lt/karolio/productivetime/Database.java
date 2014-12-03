@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "Pomodoro.db";
-    public static final String SQL_CREATE_ENTRIES = "CREATE TABLE pomodoros (ID INTEGER PRIMARY KEY, start INT, end INT, category VARCHAR(255))";
+    public static final String SQL_CREATE_ENTRIES = "CREATE TABLE pomodoros (ID INTEGER PRIMARY KEY, start INT, end INT, category VARCHAR(255), isFinished INT)";
     public static final String SQL_DELETE_ENTRIES = "DROP TABLE pomodoros";
 
     public Database(Context context) {
