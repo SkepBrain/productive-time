@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:orientation="horizontal"
+    android:background="@color/background_color"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="31"
+        android:textSize="@dimen/stat_text_size"
+        android:textColor="@color/text_color"
+        android:id="@+id/day"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.08" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/day_time"
+        android:background="@drawable/day_bar_shape"
+        android:text="day"
+        android:textSize="@dimen/stat_text_size"
+        android:gravity="center"
+        android:textColor="@color/primary_text_default_material_light"
+        android:layout_weight="0.33"
+        android:layout_gravity="center" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/night_time"
+        android:background="@drawable/night_bar_shape"
+        android:text="night"
+        android:textSize="@dimen/stat_text_size"
+        android:gravity="center"
+        android:textColor="@color/text_color"
+        android:layout_weight="0.33"
+        android:layout_gravity="center" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/total_time"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/total_time_bar_shape"
+        android:text="total"
+        android:textSize="@dimen/stat_text_size"
+        android:gravity="center"
+        android:textColor="@color/primary_text_default_material_light"
+        android:layout_weight="0.25"
+        android:layout_gravity="center" />
+
+</LinearLayout>

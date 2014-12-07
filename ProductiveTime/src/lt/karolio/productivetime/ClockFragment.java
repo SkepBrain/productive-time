@@ -80,6 +80,7 @@ public class ClockFragment extends Fragment {
     @Override
     public void onStart (){
         super.onStart();
+
         View circle = getView().findViewById(R.id.circle);
         clock = (TextView)getView().findViewById(R.id.clock);
         circle.setOnClickListener(new View.OnClickListener() {

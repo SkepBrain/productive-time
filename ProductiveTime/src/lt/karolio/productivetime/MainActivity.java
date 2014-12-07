@@ -1,5 +1,6 @@
 package lt.karolio.productivetime;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,6 +30,7 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements ClockFragment.OnFragmentInteractionListener {
@@ -41,15 +43,63 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
     public static int shortBreakTime = 5;
     public static int longBreakTime = 30;
 
+    ActionBar actionBar;
+    public ArrayList<View> buttons = new ArrayList<View>();
+
+
+
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-		
+
+
+        actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        setButtons();
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // When swiping between different app sections, select the corresponding tab.
+                // We can also use ActionBar.Tab#select() to do this if we have a reference to the
+                // Tab.
+                switch (position){
+                    case 0:
+                        buttons.get(0).setBackgroundResource(R.drawable.ic_clock_selected);
+                        buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
+                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
+                        break;
+                    case 1:
+                        buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
+                        buttons.get(1).setBackgroundResource(R.drawable.ic_calendar_selected);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
+                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
+                        break;
+                    case 2:
+                        buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
+                        buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff_selected);
+                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
+                        break;
+                    case 3:
+                        buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
+                        buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
+                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings_selected);
+                        break;
+                    default:
+                        System.out.println(position + "meu");
+                }
+            }
+        });
         mViewPager.setOffscreenPageLimit(5);
         /*mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
         	
@@ -66,6 +116,30 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
         logger = new Logger(this);
 	}
 
+       public class ShowOnClickListener implements OnClickListener{
+
+        int position;
+        public ShowOnClickListener(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View v){
+            mViewPager.setCurrentItem(position, true);
+        }
+
+    }
+
+    public void setButtons(){
+        buttons.add(findViewById(R.id.clockButton));
+        buttons.add(findViewById(R.id.calendarButton));
+        buttons.add(findViewById(R.id.stuffButton));
+        buttons.add(findViewById(R.id.settingsButton));
+
+        for(int i = 0; i < 4; i++){
+            buttons.get(i).setOnClickListener(new ShowOnClickListener(i));
+        }
+    }
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
         public AppSectionsPagerAdapter(android.support.v4.app.FragmentManager fm) {

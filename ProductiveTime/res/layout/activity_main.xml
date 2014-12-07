@@ -1,7 +1,64 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
 
     android:id="@+id/pager"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
- />
+    android:layout_height="match_parent"/>
 
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/tab_color">
+
+        <ImageButton
+            android:layout_width="@dimen/abc_action_bar_default_height_material"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:id="@+id/clockButton"
+            android:background="@drawable/ic_clock_selected"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:clickable="true" />
+
+        <ImageButton
+            android:layout_width="@dimen/abc_action_bar_default_height_material"
+            android:layout_height="fill_parent"
+            android:id="@+id/calendarButton"
+            android:background="@drawable/ic_calendar"
+            android:layout_toRightOf="@+id/clockButton"
+            android:layout_toEndOf="@+id/clockButton"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:clickable="true" />
+
+        <ImageButton
+            android:layout_width="@dimen/abc_action_bar_default_height_material"
+            android:layout_height="fill_parent"
+            android:id="@+id/stuffButton"
+            android:background="@drawable/ic_stuff"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/calendarButton"
+            android:layout_toEndOf="@+id/calendarButton"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:clickable="true" />
+
+        <ImageButton
+            android:layout_width="@dimen/abc_action_bar_default_height_material"
+            android:layout_height="fill_parent"
+            android:id="@+id/settingsButton"
+            android:background="@drawable/ic_settings"
+            android:layout_toRightOf="@+id/stuffButton"
+            android:layout_toEndOf="@+id/stuffButton"
+            android:clickable="true" />
+    </RelativeLayout>
+</RelativeLayout>
