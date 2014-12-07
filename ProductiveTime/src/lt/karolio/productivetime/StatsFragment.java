@@ -9,7 +9,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,6 +33,8 @@ public class StatsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    StatsAdapter statsListAdapter;
 
  //   private OnFragmentInteractionListener mListener;
 
@@ -54,6 +60,8 @@ public class StatsFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +76,12 @@ public class StatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stats, container, false);
+        View view = inflater.inflate(R.layout.fragment_stats, container, false);
+
+        StatsAdapter statsListAdapter = new StatsAdapter(getActivity());
+        ListView statsListView = (ListView)view.findViewById(R.id.statsListView);
+        statsListView.setAdapter(statsListAdapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -98,7 +111,7 @@ public class StatsFragment extends Fragment {
     public void onResume() {
     	super.onResume();
         
-        TextView secs = (TextView)getView().findViewById(R.id.year);
+        TextView secs = (TextView)getView().findViewById(R.id.count);
         secs.setText(MainActivity.logger.getPomodoroTime((int)(System.currentTimeMillis() / 1000L - 86400), (int)(System.currentTimeMillis() / 1000L))+"");
         
     }
@@ -107,7 +120,7 @@ public class StatsFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
     	super.setUserVisibleHint(isVisibleToUser);
     	if (isVisibleToUser) {
-            TextView secs = (TextView)getView().findViewById(R.id.year);
+            TextView secs = (TextView)getView().findViewById(R.id.count);
             secs.setText(MainActivity.logger.getPomodoroTime((int)(System.currentTimeMillis() / 1000L - 86400), (int)(System.currentTimeMillis() / 1000L))+"");
     	}
     }

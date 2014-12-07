@@ -30,6 +30,7 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements ClockFragment.OnFragmentInteractionListener {
@@ -44,12 +45,17 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
 
     ActionBar actionBar;
     public ArrayList<View> buttons = new ArrayList<View>();
+
+
+
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-		
+
 
         actionBar = getSupportActionBar();
         actionBar.hide();
@@ -58,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
-       mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 // When swiping between different app sections, select the corresponding tab.
@@ -66,28 +72,24 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
                 // Tab.
                 switch (position){
                     case 0:
-                        System.out.println(position);
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock_selected);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
                         buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
                         buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
                         break;
                     case 1:
-                        System.out.println(position);
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar_selected);
                         buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
                         buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
                         break;
                     case 2:
-                        System.out.println(position);
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
                         buttons.get(2).setBackgroundResource(R.drawable.ic_stuff_selected);
                         buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
                         break;
                     case 3:
-                        System.out.println(position);
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
                         buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
