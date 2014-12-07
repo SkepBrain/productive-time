@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="lt.karolio.productivetime.FactsFragment"
-    android:background="#ff9cffa7"
+    android:background="@color/background_color"
     android:orientation="horizontal">
 
 
