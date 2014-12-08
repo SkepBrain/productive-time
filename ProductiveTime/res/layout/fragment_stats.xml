@@ -35,11 +35,31 @@
         android:layout_above="@+id/statsListView"
         android:layout_centerHorizontal="true" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@id/statsListView"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_sun"
+            android:layout_weight="0.5"/>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.9"
+            android:src="@drawable/ic_moon"/>
+    </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/statsListView"
+        android:listSelector="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="7.0sp"
         tools:listitem="@layout/stats_item"

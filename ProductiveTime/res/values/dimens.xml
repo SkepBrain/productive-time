@@ -7,4 +7,14 @@
     <dimen name="ring_dimen">250dp</dimen>
     <dimen name="stat_text_size">12sp</dimen>
 
+    <dimen name="day_bottom_Right_Radius">10dp</dimen>
+    <dimen name="day_bottom_Left_Radius">0dp</dimen>
+    <dimen name="day_top_Left_Radius">10dp</dimen>
+    <dimen name="day_top_Right_Radius">0dp</dimen>
+
+    <dimen name="night_bottom_Right_Radius">0dp</dimen>
+    <dimen name="night_bottom_Left_Radius">10dp</dimen>
+    <dimen name="night_top_Left_Radius">0dp</dimen>
+    <dimen name="night_top_Right_Radius">10dp</dimen>
+
 </resources>

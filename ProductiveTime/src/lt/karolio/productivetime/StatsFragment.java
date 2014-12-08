@@ -34,8 +34,6 @@ public class StatsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    StatsAdapter statsListAdapter;
-
  //   private OnFragmentInteractionListener mListener;
 
     /**

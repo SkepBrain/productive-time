@@ -74,26 +74,17 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
                     case 0:
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock_selected);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
-                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
-                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_settings);
                         break;
                     case 1:
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar_selected);
-                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
-                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_settings);
                         break;
                     case 2:
                         buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
                         buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
-                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff_selected);
-                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings);
-                        break;
-                    case 3:
-                        buttons.get(0).setBackgroundResource(R.drawable.ic_clock);
-                        buttons.get(1).setBackgroundResource(R.drawable.ic_calendar);
-                        buttons.get(2).setBackgroundResource(R.drawable.ic_stuff);
-                        buttons.get(3).setBackgroundResource(R.drawable.ic_settings_selected);
+                        buttons.get(2).setBackgroundResource(R.drawable.ic_settings_selected);
                         break;
                     default:
                         System.out.println(position + "meu");
@@ -133,10 +124,9 @@ public class MainActivity extends ActionBarActivity implements ClockFragment.OnF
     public void setButtons(){
         buttons.add(findViewById(R.id.clockButton));
         buttons.add(findViewById(R.id.calendarButton));
-        buttons.add(findViewById(R.id.stuffButton));
         buttons.add(findViewById(R.id.settingsButton));
 
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 3; i++){
             buttons.get(i).setOnClickListener(new ShowOnClickListener(i));
         }
     }

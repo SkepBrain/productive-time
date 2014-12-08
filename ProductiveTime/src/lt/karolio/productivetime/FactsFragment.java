@@ -1,12 +1,26 @@
 package lt.karolio.productivetime;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.internal.widget.AdapterViewCompat;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -26,6 +40,8 @@ public class FactsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ListView settingsListView;
 
  //   private OnFragmentInteractionListener mListener;
 
@@ -64,8 +80,56 @@ public class FactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_facts, container, false);
+        View view = inflater.inflate(R.layout.fragment_facts, container, false);
+
+        SettingsAdapter settingsAdapter = new SettingsAdapter(getActivity());
+        settingsListView = (ListView)view.findViewById(R.id.settings);
+        settingsListView.setAdapter(settingsAdapter);
+
+        settingsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        int mHour, mMinute;
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                // TODO Auto-generated method stub
+              //  String itemString = (String)parent.getItemAtPosition(position);
+              //  System.out.println(itemString);
+
+                final TextView text1 = (TextView)view.findViewById(android.R.id.text1);
+                final TextView text2 = (TextView)view.findViewById(android.R.id.text2);
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+                alert.setTitle(text1.getText());
+                alert.setMessage(text2.getText());
+
+                final EditText input = new EditText(getActivity());
+                input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
+              //  input.setBackgroundColor(Color.CYAN);
+                input.setPadding(20, 0, 0, 10);
+                alert.setView(input);
+
+                alert.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String value = input.getText().toString();
+                        text2.setText(value + " min");
+                    }
+                });
+
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
+
+                alert.show();
+
+            }
+        });
+
+        return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
@@ -73,6 +137,9 @@ public class FactsFragment extends Fragment {
 //            mListener.onFragmentInteraction(uri);
 //        }
 //    }
+
+
+
 
     @Override
     public void onAttach(Activity activity) {

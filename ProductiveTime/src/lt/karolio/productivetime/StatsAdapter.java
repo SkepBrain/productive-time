@@ -49,10 +49,10 @@ public class StatsAdapter extends BaseAdapter {
 
         DayInfo dayInfo = info.get(position);
         System.out.println(day.getText() + " " + dayInfo.day);
-//        day.setText(dayInfo.day);
-//        dayTime.setText(dayInfo.dayTime);
-//        nightTime.setText(dayInfo.nightTime);
-//        totalTime.setText(dayInfo.totalTime);
+        day.setText(dayInfo.day+"");
+        dayTime.setText(dayInfo.dayTime+"");
+        nightTime.setText(dayInfo.nightTime+"");
+        totalTime.setText(dayInfo.totalTime+"");
 
         return convertView;
     }

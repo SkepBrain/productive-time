@@ -9,6 +9,6 @@
         />
 
     <corners android:radius="1dp"
-        android:bottomRightRadius="0dp" android:bottomLeftRadius="10dp"
-        android:topLeftRadius="0dp" android:topRightRadius="10dp"/>
+        android:bottomRightRadius="@dimen/night_bottom_Right_Radius" android:bottomLeftRadius="@dimen/night_bottom_Left_Radius"
+        android:topLeftRadius="@dimen/night_top_Left_Radius" android:topRightRadius="@dimen/night_top_Right_Radius"/>
 </shape>
